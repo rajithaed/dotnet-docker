@@ -2,13 +2,13 @@ parameters:
   imageBuilderImage: null
   manifest: null
 phases:
-  - phase: Finalize
+  - phase: Publish_Finalize
     dependsOn:
-      - Linux_amd64
-      - Linux_arm32v7
-      - NanoServerSac2016_amd64
-      - NanoServer1709_amd64
-      - NanoServer1803_amd64
+      - Copy_Images_Linux_amd64
+      - Copy_Images_Linux_arm32v7
+      - Copy_Images_NanoServerSac2016_amd64
+      - Copy_Images_NanoServer1709_amd64
+      - Copy_Images_NanoServer1803_amd64
     queue:
       name: DotNet-Build
       demands:
