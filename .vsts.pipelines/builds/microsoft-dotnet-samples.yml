@@ -15,9 +15,11 @@ phases:
       matrixLinuxAmd64:
         Build:
           buildPath: '*'
+          osVersion: '*'
       matrixLinuxArm32v7:
         Build:
           buildPath: '*'
+          osVersion: '*'
       matrixWindowsSac2016Amd64:
         Build:
           buildPath: '*'

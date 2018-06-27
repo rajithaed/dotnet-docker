@@ -6,9 +6,10 @@ parameters:
   repo: null
   architecture: null
   matrix: {}
+  condition: null
 phases:
   - phase: ${{ parameters.phase }}
-    condition: or(succeeded(), eq(variables['startingPhase'], 'publish'))
+    condition: ${{ parameters.condition }}
     dependsOn: ${{ parameters.dependsOn }}
     queue:
       name: DotNet-Build

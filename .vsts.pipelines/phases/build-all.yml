@@ -154,6 +154,7 @@ phases:
       imageBuilderImage: ${{ parameters.imageBuilderLinuxImage }}
       manifest: ${{ parameters.manifest }}
       architecture: amd64
+      condition: or(succeeded('Test_Linux_amd64'), and(eq(dependencies.Test_Linux_amd64.result, 'Skipped'), eq(variables['startingPhase'], 'publish')))
       dependsOn: Test_Linux_amd64
       repo: ${{ parameters.repo }}
       matrix: ${{ parameters.matrixLinuxAmd64 }}
@@ -163,6 +164,7 @@ phases:
       imageBuilderImage: ${{ parameters.imageBuilderLinuxImage }}
       manifest: ${{ parameters.manifest }}
       architecture: arm
+      condition: or(succeeded('Test_Linux_arm32v7'), and(eq(dependencies.Test_Linux_arm32v7.result, 'Skipped'), eq(variables['startingPhase'], 'publish')))
       dependsOn: Test_Linux_arm32v7
       repo: ${{ parameters.repo }}
       matrix: ${{ parameters.matrixLinuxArm32v7 }}
@@ -171,6 +173,7 @@ phases:
       phase: Copy_Images_NanoServerSac2016_amd64
       imageBuilderImage: ${{ parameters.imageBuilderWindowsImage }}
       manifest: ${{ parameters.manifest }}
+      condition: or(succeeded('Test_NanoServerSac2016_amd64'), and(eq(dependencies.Test_NanoServerSac2016_amd64.result, 'Skipped'), eq(variables['startingPhase'], 'publish')))
       dependsOn: Test_NanoServerSac2016_amd64
       repo: ${{ parameters.repo }}
       demands:
@@ -181,6 +184,7 @@ phases:
       phase: Copy_Images_NanoServer1709_amd64
       imageBuilderImage: ${{ parameters.imageBuilderWindowsImage }}
       manifest: ${{ parameters.manifest }}
+      condition: or(succeeded('Test_NanoServer1709_amd64'), and(eq(dependencies.Test_NanoServer1709_amd64.result, 'Skipped'), eq(variables['startingPhase'], 'publish')))
       dependsOn: Test_NanoServer1709_amd64
       repo: ${{ parameters.repo }}
       demands:
@@ -191,6 +195,7 @@ phases:
       phase: Copy_Images_NanoServer1803_amd64
       imageBuilderImage: ${{ parameters.imageBuilderWindowsImage }}
       manifest: ${{ parameters.manifest }}
+      condition: or(succeeded('Test_NanoServer1803_amd64'), and(eq(dependencies.Test_NanoServer1803_amd64.result, 'Skipped'), eq(variables['startingPhase'], 'publish')))
       dependsOn: Test_NanoServer1803_amd64
       repo: ${{ parameters.repo }}
       demands:
