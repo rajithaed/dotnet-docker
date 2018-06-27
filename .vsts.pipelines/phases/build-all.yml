@@ -154,7 +154,7 @@ phases:
       imageBuilderImage: ${{ parameters.imageBuilderLinuxImage }}
       manifest: ${{ parameters.manifest }}
       architecture: amd64
-      condition: or(succeeded('Test_Linux_amd64'), and(eq(dependencies.Test_Linux_amd64.result, 'Skipped'), eq(variables['startingPhase'], 'publish')))
+      condition: or(succeeded('Test_Linux_amd64'), and(eq(dependencies.Test_Linux_amd64.result, 'Skipped'), eq(variables['startingPhase1'], 'publish')))
       dependsOn: Test_Linux_amd64
       repo: ${{ parameters.repo }}
       matrix: ${{ parameters.matrixLinuxAmd64 }}
